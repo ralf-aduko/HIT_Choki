@@ -23,13 +23,16 @@ function Update () {
 	x = Input.GetAxis("Horizontal_2");
 	y = Input.GetAxis("Vertical_2");
 	
+	// moving depend on world position
 //	transform.Translate(x*0.1,0,y*0.1);
-		
+	
+	// get direction from this object to FirstViewCamera
 	runningDirection = FirstViewCamera.transform.position - this.transform.position;
 	
 	runningDirection.y = 0;
 	
 	runningDirection = runningDirection.normalized;
 	
+	// moving depend on runningDirection
 	transform.Translate((runningDirection*y*0.1 - Vector3.Cross(runningDirection,Vector3.up).normalized*x*0.1), Space.Self);
 }
